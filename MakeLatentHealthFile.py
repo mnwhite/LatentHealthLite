@@ -68,13 +68,15 @@ import numpy as np
 import itertools
 from scipy.stats import norm
 from scipy.special import perm, factorial
+sys.path.insert(0, './ParameterSpecs')
 
+# Get system arguments
+my_args = sys.argv
 #my_args = [None, 'process', 'TwoStudyAllOver23HeteroParams', 'MainResults.dat', '40', '-6', '22']
 #my_args = [None, 'process', 'TwoStudyAllTinyParams', 'TinyResults.dat', '15', '-6', '22']
 #my_args = [None, 'filter', 'TwoStudyAllOver23HeteroParams', 'ConditionalHealthDstn.txt', '120', '-12', '28', '3']
 
-# Get required system arguments
-my_args = sys.argv
+# Process required arguments
 if len(my_args) < 4:
     print('Please read the documentation at the top of MakeLatentHealthProcess.py to use this file.')
 worktype = my_args[1]
