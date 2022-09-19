@@ -36,6 +36,7 @@ InitialHealthDstn : np.array
 import numpy as np
 from struct import unpack
 
+# Name the file to be loaded here
 discretization_file = 'MainResults.dat'
 
 with open(discretization_file, 'rb') as f:
