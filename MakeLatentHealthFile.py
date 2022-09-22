@@ -49,7 +49,7 @@ A tab-delimited text file with summary statistics for the distribution of latent
 health for any combination of sex, age, and observed sequence of SRHS (up to three
 waves long), based on the main specification estimated in the paper, can be made by:
     
-> python MakeLatentHealthFile.py filter TwoStudyAllOver23HeteroParams ConditionalHealthDstn.txt 120 -12 28
+> python MakeLatentHealthFile.py filter TwoStudyAllOver23HeteroParams ConditionalHealthDstn.txt 120 -12 28 3
 
 Alternatively, the line 'my_args = sys.argv' near the top of the code can be
 commented out, and the nearby line defining my_args can be uncommented and edited.

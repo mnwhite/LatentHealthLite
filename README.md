@@ -198,3 +198,59 @@ MEPSwomenOver18Params.py : Women-only, MEPS only, no heteroskedasticity and stan
 
 ## Format of a Parameter Specification File
 
+The following values are defined in each parameter file in /ParameterSpecs. Because of a poor
+decision early in the project's lifecycle, the thing that is called x in the paper is called h
+in the code, and vice versa. I am deeply sorry.
+
+x_min : Bottom of the span of latent health
+
+x_max : Top of the span of latent health
+
+x_count : Total number of nodes in the grid of unobserved states, K x N
+
+data_file : Relative path to the data for the estimation (not included in lite repo)
+
+source_name : Name of dataset(s) used, for figure labeling purposes
+
+figure_label : Text string to use as prefix for figure filenames
+
+sex_list : List of sexes in this specification; should be [0] or [1] or [0,1]
+
+T_max = 21 : Maximum number of periods for each individual
+
+id_col : Column with individual's id number (can be None), not used in lite repo
+
+weight_col : Column of the data with observation weight, not used in lite repo
+
+age_col : Column of the data with age, not used in lite repo
+
+sex_col : Column of the data with male dummy, not used in lite repo
+
+data_init_col : Column where data starts, not used in lite repo
+
+measure_count : Number of measures in data per period
+
+category_counts : Number of categorical responses for each measure (list)
+
+measure_names : Abbreviation for each measure in data (list), not used in lite repo
+
+age_min : Minimum age in the data
+
+age_max : Maximum possible age in the data
+
+age_incr : Age increment in years; how long is a model period
+
+wave_length : Number of periods between actual data collection waves
+
+report_type_count : Number of discrete types whose SRHS report variance differs
+
+mixed_health_shocks : Whether health shocks are a mixed normal (bool)
+
+current_param_vec : Array with parameter estimates.
+
+The raw parameter vector is transformed by the function makeParameterDict in
+MakeLatentHealthFile.py, to rescale polynomial coefficients, transform from Taylor-style
+to coeffecients, calculate probabilities from logit formulas, etc. The transformed
+parameters are what is actually passed to the log-likelihood function (and reported
+in the paper tables). These parameter transformations are used to aid in the MLE
+procedure by making parameter scales more similar, etc.
