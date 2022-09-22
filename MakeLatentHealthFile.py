@@ -33,7 +33,7 @@ output_name : The name of the file to which to write the latent health process.
 node_count  : The integer number of nodes in the latent health discretization.
 health_min  : The minimum value of latent health in the discretization.
 health_max  : The maximum value of latent health in the discretization.
-Z_to_cond   : The number of survey waves on which to condition latent health.
+Z_to_cond   : The number of survey waves on which to condition latent health (filter only).
 
 As an example, the coarse discretization based on the main specification, as 
 described in section 5 of the paper, can be created by:
