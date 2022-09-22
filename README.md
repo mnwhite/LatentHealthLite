@@ -16,9 +16,14 @@ model, possibly replacing SRHS as the representation of health.
 prediction of a respondent's latent health distribution and reporting type, conditional on
 their sex, age, and reported sequence of SRHS.
 
-Both of these tasks can be accomplished with the Python3 script MakeLatentHealthFile.py,
+Both of these tasks can be accomplished with the Python script MakeLatentHealthFile.py,
 which can be run from the command line or from within a Python environment (with slight
-edits to the code). The command line syntax for the file is given by:
+edits to the code). To run the code, you should have the scipy and numpy packages installed.
+These can both be installed from a command line (when navigated to the code directory) with:
+
+    pip install -r requirements.txt
+
+The command line syntax for the main script file is given by:
 
     python MakeLatentHealthFile.py worktype spec_name output_name node_count health_min health_max Z_to_cond
 
@@ -72,9 +77,11 @@ The files produced by the "process" script are binary data files and not human r
 Once a discretized latent health process file has been created with MakeLatentHealthFile.py,
 it can be imported into the working environment for a structural model by reading the binary
 data file. Code for this task has been provided for both Python3 (LoadLatentHealthProcess.py)
-and Matlab (LoadLatentHealthProcess.m). In either case, the loading script should be put
-in the project directory, along with the binary data file. The variable discretization_file
-should be set to name the file to be read into memory; this is the only adjustment needed.
+and Matlab (LoadLatentHealthProcess.m).
+
+In either case, the loading script should be put in the project directory, along with the
+binary data file. The variable discretization_file should be set to name the file to be read
+into memory; this is the only adjustment needed.
 
 The following objects will be created, as numpy arrays or Matlab arrays:
 
