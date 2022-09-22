@@ -3,9 +3,10 @@
 
 ## Basics
 
-This repository contains a few short scripts that allow other researchers to quickly and
-easily incorporate the results of the paper into their own work. There are two primary
-use cases for the code provided here:
+This repository contains a few small scripts that allow other researchers to quickly and
+easily incorporate the results of the paper into their own work. The code can be downloaded
+in a zip file by clicking the green **Code** button on the main repository page, then
+unpacked into any working directory. There are two primary use cases for the code provided:
 
 1. To construct a discretized latent health process that can be imported into a structural
 model, possibly replacing SRHS as the representation of health.
@@ -144,6 +145,55 @@ was never asked.
 
 
 ## List of Parameter Specifications
+
+The directory /ParameterSpecs contains many parameter specification files. Each file represents
+a version of the latent health model that was estimated for the project. Not all of the
+specifications are reported in the paper or online appendix. A brief description of each
+specification is as follows:
+
+TwoStudyAllOver23HeteroParams.py : Both sexes specification reported in the paper: HRS & PSID.
+
+TwoStudyMenOver23HeteroParams.py : Men-only specification reported in the paper: HRS & PSID.
+
+TwoStudyWomenver23HeteroParams.py : Women-only specification reported in the paper: HRS & PSID.
+
+TwoStudyAllOver23aParams.py : Both sexes specification reported in appendix: no heteroskedasticity nor skewed health shocks.
+
+TwoStudyMenOver23aParams.py : Men-only specification reported in appendix: no heteroskedasticity nor skewed health shocks.
+
+TwoStudyWomenver23aParams.py : Women-only specification reported in appendix: no heteroskedasticity nor skewed health shocks.
+
+TwoStudyAllTinyParams.py : Very coarse latent health grid specification (N=15), mentioned in section 5 but not reported.
+
+HRSallOver50HeteroParams.py : Both sexes, HRS only, heteroskedastic reporting errors and skewed health shocks.
+
+HRSmenOver50HeteroParams.py : Men-only, HRS only, heteroskedastic reporting errors and skewed health shocks.
+
+HRSwomenOver50HeteroParams.py : Women-only, HRS only, heteroskedastic reporting errors and skewed health shocks.
+
+HRSmenOver50aParams.py : Men-only, HRS only, no heteroskedasticity and standard normal health shocks.
+
+HRSwomenOver50aParams.py : Women-only, HRS only, no heteroskedasticity and standard normal health shocks.
+
+PSIDallOver23HeteroParams.py : Both sexes, PSID only, heteroskedastic reporting errors and skewed health shocks.
+
+PSIDmenOver23HeteroParams.py : Men-only, PSID only, heteroskedastic reporting errors and skewed health shocks.
+
+PSIDwomenOver23HeteroParams.py : Women-only, PSID only, heteroskedastic reporting errors and skewed health shocks.
+
+PSIDmenOver23aParams.py : Men-only, PSID only, no heteroskedasticity and standard normal health shocks.
+
+PSIDwomenOver23aParams.py : Women-only, PSID only, no heteroskedasticity and standard normal health shocks.
+
+MEPSallOver18HeteroParams.py : Both sexes, MEPS only, heteroskedastic reporting errors and skewed health shocks.
+
+MEPSmenOver18HeteroParams.py : Men-only, MEPS only, heteroskedastic reporting errors and skewed health shocks.
+
+MEPSwomenOver18HeteroParams.py : Women-only, MEPS only, heteroskedastic reporting errors and skewed health shocks.
+
+MEPSmenOver18Params.py : Men-only, MEPS only, no heteroskedasticity and standard normal health shocks.
+
+MEPSwomenOver18Params.py : Women-only, MEPS only, no heteroskedasticity and standard normal health shocks.
 
 
 ## Format of a Parameter Specification File
