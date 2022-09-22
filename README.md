@@ -18,14 +18,22 @@ Both of these tasks can be accomplished with the Python3 script MakeLatentHealth
 which can be run from the command line or from within a Python environment (with slight
 edits to the code). The command line syntax for the file is given by:
 
-> python MakeLatentHealthFile.py worktype spec_name output_name node_count health_min health_max Z_to_cond
+    python MakeLatentHealthFile.py worktype spec_name output_name node_count health_min health_max Z_to_cond
+
+The ordered inputs for this script are:
 
 worktype    : The type of output to be produced, must be "filter" or "process".
+
 spec_name   : The name of the specification file, with no .py file extension.
+
 output_name : The name of the file to which to write the latent health process.
+
 node_count  : The integer number of nodes in the latent health discretization.
+
 health_min  : The minimum value of latent health in the discretization.
+
 health_max  : The maximum value of latent health in the discretization.
+
 Z_to_cond   : The number of survey waves on which to condition latent health (filter only).
 
 Each section below provides instructions for common research tasks. A list of all provided
@@ -41,18 +49,18 @@ MakeLatentHealthFile.py should be run with "process" as its first argument (no q
 As an example, a coarse discretization based on the main parameter estimates, with 40 nodes
 on the interval of latent health spanned by [-6, 22], can be created by:
     
-> python MakeLatentHealthFile.py process TwoStudyAllOver23HeteroParams MainResults.dat 40 -6 22
+    python MakeLatentHealthFile.py process TwoStudyAllOver23HeteroParams MainResults.dat 40 -6 22
 
 A very coarse discretization using only 15 latent health nodes spanning [-6, 22], based on
 parameters re-estimated with this very coarse grid, which are not reported in the paper
 nor appendix, can be created by:
 
-> python MakeLatentHealthFile.py process TwoStudyAllTinyParams TinyResults.dat 15 -6 22
+    python MakeLatentHealthFile.py process TwoStudyAllTinyParams TinyResults.dat 15 -6 22
 
 Because those choices are what were actually used for the "tiny" estimation, that
 command is functionally identical when the last three arguments are omitted entirely:
 
-> python MakeLatentHealthFile.py process TwoStudyAllTinyParams TinyResults.dat 15 -6 22
+    python MakeLatentHealthFile.py process TwoStudyAllTinyParams TinyResults.dat
 
 The files produced by the "process" script are binary data files and not human readable.
 
@@ -68,36 +76,28 @@ should be set to name the file to be read into memory; this is the only adjustme
 
 The following objects will be created, as numpy arrays or Matlab arrays:
 
-node_count : int
-    Number of nodes in the discretized grid of latent health levels.
+node_count (int) : Number of nodes in the discretized grid of latent health levels.
 
-age_count : int
-    Number of discrete ages loaded in the data.
+age_count (int) : Number of discrete ages loaded in the data.
 
-report_count : int
-    Number of different SRHS reporting categories (e.g. poor, fair, good, etc).
+report_count (int) : Number of different SRHS reporting categories (e.g. poor, fair, good, etc).
 
-type_count : int
-    Number of reporting types in this specification. Type determines only the
-    standard deviation of SRHS reporting errors.
+type_count (int) : Number of reporting types in this specification. Type determines only the
+standard deviation of SRHS reporting errors.
 
-HealthGrid : np.array
-    Array of size node_count with the discretized latent health grid.
+HealthGrid (array) : Array of size (node_count,) with the discretized latent health grid.
 
-LivPrbArray : np.array
-    Array of shape (2, age_count, node_count) with survival probabilities by sex-age-health.
+LivPrbArray (array) : Array of shape (2, age_count, node_count) with survival probabilities
+by sex-age-health.
 
-TransPrbArray : np.array
-    Array of shape (2, age_count, node_count, node_count) with transition probabilities
-    among discretized health states by age-sex-health_now-health_next.
+TransPrbArray (array) : Array of shape (2, age_count, node_count, node_count) with
+transition probabilities among discretized health states by age-sex-health_now-health_next.
 
-ReportPrbArray : np.array
-    Array of shape (type_count, report_count, node_count) with the probability of reporting
-    each categorical SRHS by latent health.
+ReportPrbArray (array) : Array of shape (type_count, report_count, node_count) with the
+probability of reporting each categorical SRHS by latent health.
 
-InitialHealthDstn : np.array
-    Array of shape (2, age_count, nodecount) with the unconditional distribution
-    of discretized latent health (conditional on survival) by age-sex.
+InitialHealthDstn (array) : Array of shape (2, age_count, nodecount) with the unconditional
+distribution of discretized latent health (conditional on survival) by age-sex.
 
 In Python, these variables and arrays can be imported from LoadLatentHealthProcess.py. In
 Matlab script, they are declared as global variables and can be accessed as such. The
@@ -115,7 +115,7 @@ For example, a tab-delimited text file with summary statistics for the distribut
 latent health for any combination of sex, age, and observed sequence of SRHS (up to three
 waves long), based on the main specification estimated in the paper, can be made by:
     
-> python MakeLatentHealthFile.py filter TwoStudyAllOver23HeteroParams ConditionalHealthDstn.txt 120 -12 28 3
+    python MakeLatentHealthFile.py filter TwoStudyAllOver23HeteroParams ConditionalHealthDstn.txt 120 -12 28 3
 
 As the file is human-readable, its contents can be quickly verified. The number of waves
 to "look back" can be set at any whole number, but the produced dataset grows exponentially
